@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title id="titlePage"></title>
+		
+		<div class="container">
+			<a href="https://www.univ-amu.fr/fr/universite">
+				<img src="logo.png" alt="" class="pull-right" style="width:20%; margin: 20px 15px 15px 0px;">
+			</a>
+
+			<div class="jumbotron">
+				
+				<h1 id="titreHeader" class="bd-title"> </h1>
+				<a href="http://Fr.ap-hm.fr">
+					<img src="aphm.png" alt="" class="pull-right" style="width:10%; margin: -10px 15px 15px 0px;">
+				</a>
+				<h2 class="h2"> <small><strong><span id="sousTitreHeader"></span></strong></small> </h2>
+			
+			</div>
+
+		</div>
+		
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-datetimepicker.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+		
+		<script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		
+<!--
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+-->
+		<script type="text/javascript" src="js/jquery-ui.js"></script>
+		<script src="js/datepicker-fr.js"></script>
+		<script src="js/datepicker-en-GB.js"></script>
+
+
+	</head>
+	<body>
+		
+<!--
+		REFERENCES
+-->
+			 <!-- Latest compiled and minified CSS -->
+<!--
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+-->
+
+		<!-- jQuery library -->
+<!--
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+-->
+
+		<!-- Latest compiled JavaScript -->
+<!--
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+-->
+		
+
+<!--
+		<script src="js/bootstrap-datetimepicker.min.js"></script>
+-->
+		
+		
+
+
+		
+	<!--
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!   LES ONGLETS   !!!!!!!!!!!!!!!!!!!!!!!!
+	-->
+		<div class="container">		
+			<ul class="nav nav-tabs">
+				<li role="presentation"><a   onclick="javascript:afficher('outilDiag');" id="labelOutilDiag"></a></li>
+				<li role="presentation"><a   onclick="javascript:afficher('regles');"id="labelSystCodage"></a></li>
+				<li role="presentation"><a  onclick="javascript:afficher('aPropos');" href="#" id="labelAPropos"></a></li>
+				<li class="dropdown pull-right">
+					<a class="dropdown-toggle"  data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> <span id="labelLanguage"></span><span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li> <a  id="selectFR" > Français </a></li>
+						<li> <a id="selectEN"> English </a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+<!--
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!! LES INFOS DU PATIENT !!!!!!!!!!!!!!!!!!!!!
+-->
+		<div style="display:block" id="outilDiag">
+			<div class="container">
+				<h1 id="headerIdentity"></h1>
+				<br />
+				<form id="formData">
+					<div class="well">
+						<div class="row">
+							<div class="col-sm-3">
+								<label id="labelNameClient"></label>
+								<input type="text" class="form-control" id="inputNomPatient" /> 
+							</div>
+							<div class="col-sm-3">
+								<label id="labelSurnameClient"></label>
+								<input type="text" class="form-control" id="inputPrenomPatient"/> 
+							</div>
+							<div class="col-sm-1">
+							</div>
+							<div class="col-sm-2">
+								<div class="dropdown">
+									<label id="labelSexe"></label>
+									<br/>
+									<button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown"> 
+									<span id="textDropdownMenuHF"> </span> <span class="caret"> </span>
+									</button>
+									<ul id="dropdownMenuHF" class="dropdown-menu">
+										<li class="dropdown-header"></li> 
+										<li><a id="homme"></a></li>
+										<li><a id="femme"></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="col-sm-2">
+								<label id="ageClient" ></label>
+								<input type="number" id="inputAgePatient" class="form-control"/> 
+							</div>
+
+						</div> 
+						</br>
+						<div class="row">
+							<div class="col-sm-3">
+								<label id="labelDateConsultation"></label>  
+								<input type="text" id="datepicker" class="form-control"></input>
+<!--
+								<div id="datetimepicker1" class="input-append date">
+									<label id="labelDateConsultation"></label> 
+									<input data-format="dd/MM/yyyy" type="text" id="dateConsultation" readonly></input>
+									<span class="add-on glyphicon glyphicon-calendar"></span>
+								</div>
+-->
+							</div>
+							<div class="col-sm-8">
+								<input type="button" onclick="eraseData()" value="Effacer" class="pull-right btn btn-primary" id="identityEraseButton">
+							</div>
+						</div> 
+					</div>
+				</form>
+			</div>
+<!--
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! CRITERES PATIENT !!!!!!!!!!!!!!!!!!!!!!!!!!
+-->
+
+			<br />
+			<br />
+			
+			<div class="container">
+				<h1 id="headerDiagram"></h1>
+				<br />
+				<div class="row">
+					<div class="col-md-6">
+						<div class="well">
+							<form id="formCriteria">
+								<div class="dropdown">
+									<label id="labelFaces"></label>
+									<br/>
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									<span id="textDropdownMenu1"></span>
+									<span class="caret"></span></button>
+									<ul id="dropdownMenu1" class="dropdown-menu">
+										<li class="dropdown-header"></li> 
+										<li><a id="0">0</a></li>
+										<li><a id="1">1</a></li>
+										<li><a id="2">2</a></li>
+										<li><a id="3">3</a></li>
+										<li><a id="4">4</a></li>
+										<li><a id="5">5-6</a></li>
+									</ul>
+								</div>
+								<br/>
+								<div class="dropdown">
+									<label id="labelProfondeur"></label>
+									<br/>
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									<span id="textDropdownMenu2"></span>
+									<span class="caret"></span></button>
+									<ul id="dropdownMenu2" class="dropdown-menu">
+										<li class="dropdown-header"></li> 
+										<li><a id="0"><4</a></li>
+										<li><a id="1">&ge; 4</a></li>
+										<li><a id="2">&ge; 5</a></li>
+										<li><a id="3">&ge; 6</a></li>
+										<li><a id="4">&ge; 7</a></li>
+										<li><a id="5">&ge; 8</a></li>
+									</ul>
+								</div>
+								<br/>
+								<div class="dropdown">
+									<label id="labelPerte"> </label>
+									<br/>
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									<span id="textDropdownMenu3"></span>
+									<span class="caret"></span></button>
+									<ul id="dropdownMenu3" class="dropdown-menu">
+										<li class="dropdown-header"></li> 
+										<li><a id="0"><10</a></li>
+										<li><a id="1">10-20</a></li>
+										<li><a id="2">20-30</a></li>
+										<li><a id="3">30-40</a></li>
+										<li><a id="4">40-50</a></li>
+										<li><a id="5">>50</a></li>
+									</ul>
+								</div>
+								<br/>
+								<div class="dropdown">
+									<label id="labelAssemblage"></label>
+									<br/>
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									<span id="textDropdownMenu4"></span>
+									<span class="caret"></span></button>
+									<ul id="dropdownMenu4" class="dropdown-menu">
+										<li class="dropdown-header"></li> 
+										<li><a id="protheseTrans0"></a></li>
+										<li><a id="prothesesCelSup1"></a></li>
+										<li><a id="protheseCelJux2"></a></li>
+										<li><a id="protheseEnf13"></a></li>
+										<li><a id="protheseEnf124"></a></li>
+										<li><a id="protheseEnf25"></a></li>
+									</ul>
+								</div>
+								<br/>
+								<div class="dropdown">
+									<label id="labelFacesPlaque"></label>
+									<br/>
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									<span id="textDropdownMenu5"></span>
+									<span class="caret"></span></button>
+									<ul id="dropdownMenu5" class="dropdown-menu">
+										<li class="dropdown-header"></li> 
+									  <li><a id="0">0</a></li>
+									  <li><a id="1">1</a></li>
+									  <li><a id="2">2</a></li>
+									  <li><a id="3">3</a></li>
+									  <li><a id="4">4</a></li>
+									  <li><a id="sanitaryNoAccess5"></a></li>
+									</ul>
+								</div>
+								<br/>
+								<div class="dropdown">
+									<label id="labelEtatParodontal"></label>
+									<br/>
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									<span id="textDropdownMenu6"></span>
+									<span class="caret"></span></button>
+									<ul id="dropdownMenu6" class="dropdown-menu">
+										<li class="dropdown-header"></li> 
+									  <li><a id="parondonteSain0"></a></li>
+									  <li><a id="parondonteTraité1"></a></li>
+									  <li><a id="parondonteChroDeb2"></a></li>
+									  <li><a id="parondonteChroMod3"></a></li>
+									  <li><a id="parondonteChroSev4"></a></li>
+									  <li><a id="parondonteAggre5"></a></li>
+									</ul>
+								</div>
+								<br/>
+								<div class="dropdown">
+									<label id="labelTabac"></label>
+									<br/>
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									<span id="textDropdownMenu7"></span>
+									<span class="caret"></span></button>
+									<ul id="dropdownMenu7" class="dropdown-menu">
+										<li class="dropdown-header"></li> 
+									  <li><a id="smoker0"></a></li>
+									  <li><a id="formerSmoker1"></a></li>
+									  <li><a id="2"><10</a></li>
+									  <li><a id="3">10-15</a></li>
+									  <li><a id="4">20</a></li>
+									  <li><a id="5">>20</a></li>
+									</ul>
+								</div>
+								<br/>
+								<div class="dropdown">
+									<label id="labelDiabete"></label>
+									<br/>
+									<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+									<span id="textDropdownMenu8"></span>
+									<span class="caret"></span></button>
+									<ul id="dropdownMenu8" class="dropdown-menu">
+										<li class="dropdown-header"></li> 
+										<li><a id="0">&ge; 6</a></li>
+										<li><a id="1">6.1-7</a></li>
+										<li><a id="2">7.1-8</a></li>
+										<li><a id="3">8.1-9</a></li>
+										<li><a id="4">9.1-10</a></li>
+										<li><a id="5">>10</a></li>
+									</ul>
+								</div>
+								</br>
+								<input type="button" onclick="eraseCriteria()" value="Effacer" class="btn btn-primary pull-right" id="eraseButtonDiagram">
+								</br>
+							</form>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="pull-center">
+							<canvas id="mySVG" style="border:1px solid #d3d3d3;">
+								Your browser does not support the HTML5 canvas tag.
+							</canvas>
+						</div>
+						<br/>
+						<div class="active">
+							<center><strong><font size=5><span id="risquePeri"></span> </strong> <span id='risk'> </span></font></center>
+							<br/>
+							<center><input id="printBtn" type="button" class="btn btn-info"  value="" id="savePrintButton"></center>
+						</div>
+					</div>
+				</div>
+				<br />
+				<hr>
+			</div>
+<!--
+			METHODE DE CALCUL
+-->
+			<div class="container">
+<!--
+				<div class="panel-group">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+-->
+							<h4 class="panel-title">
+								<a data-toggle="collapse" href="#collapse1"><h1 id="headerCalcul"></h1></a>
+							</h4>
+<!--
+						</div>
+-->
+<!--
+						<div id="collapse1" class="panel-collapse collapse">
+-->
+							<ul class="list-group">
+								<li class="list-group-item">
+									<dt id="saignSupp"></dt>
+									<dd id="sondClin"></dd>
+								</li>
+								<li class="list-group-item">
+									<dt id="profPoche"> </dt>
+									<dd id="sondClinSondeParo"></dd>
+								</li>
+								<li class="list-group-item">
+									<dt id="perteOss">  </dt>
+									<dd id="radioIntra"></dd>
+								</li>
+								<li class="list-group-item">
+									<dt id="exCiment"> </dt>
+									<dd id="correlationEnfouissementLimiteCerv"></dd>
+								</li>
+								<li class="list-group-item">
+									<dt id="hygieneOrale"> </dt>
+									<dd id="presenceAbsencePlaque"></dd>
+								<li class="list-group-item">
+									<dt id="etatParo"></dt>
+									<dd id="scoreEtatParo"></dd>
+								</li>
+								<li class="list-group-item">
+									<dt id="tabaccoMethodeCalul"> </dt>
+									<dd id="scoreCig"></dd>
+								</li>
+								<li class="list-group-item">
+									<dt id="statutGlyc"></dt>
+									<dd id="scoreHemo"></dd>
+							</ul>
+							<div class="panel-footer">REFERENCE : MAZEL A, BELKACEMI S, ABOUDHARAM G: Peri-implantatis risk factors: a prospective evaluation.</div>
+<!--
+						</div>
+					</div>
+				</div> 
+-->
+			</div>
+		</div>
+				
+<!--
+!!!!!!!!!!!!!!!!!!!!!!!      ONGLET REGLES  !!!!!!!!!!!!!!!!!!!!!!!!!!
+-->
+		<div style="display:none" id="regles" class="container">
+			<br />
+			<div class="row">
+				<div class="col-md-2"> </div>
+				<div class="col-md-8"> 
+					<table class="table table-bordered table-hover" >
+						<tr class="active">
+							<th colspan="4"><center> <span id="titreTabSystmCodage"></span></center> </th>
+						</tr>
+
+						<tr class="info">
+							<th id="tabScore1"> </th>
+							<th id="tabFacesSaign">   </th>
+							<th id="tabProfPoche">  </th>
+							<th id="tabPertOss"> </th>
+						</tr>
+						
+						<tr class="success">
+							<td>  0 </td>
+							<td> 0 </td>
+							<td> <4 </td>
+							<td> <10</td>
+						</tr>
+						
+						<tr class="success">
+							<td > 1 </td>
+							<td> 1 </td>
+							<td> &ge; 4 </td>
+							<td> 10-20 </td>
+						</tr>
+						
+						<tr class="success">
+							<td > 2 </td>
+							<td > 2 </td>
+							<td> &ge; 5 </td>
+							<td> 20-30 </td>
+						</tr>
+						<tr class="warning">
+							<td > 3 </td>
+							<td > 3 </td>
+							<td> &ge; 6 </td>
+							<td> 30-40 </td>
+						</tr>
+						<tr class="warning">
+							<td > 4 </td>
+							<td > 4 </td>
+							<td> &ge; 7 </td>
+							<td> 40-50 </td>
+						</tr>
+						<tr class="danger">
+							<td > 5 </td>
+							<td > 5-6 </td>
+							<td> &ge; 8 </td>
+							<td> >50 </td>
+						</tr>
+					</table>
+				</div>
+				<div class="col-md-2"> </div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"> </div>
+				<div class="col-md-8"> 
+					<table class="table table-bordered table-hover" >
+						<tr class="active">
+							<th colspan="5"><center> <span id="titreTab2"></span>  </center> </th>
+						</tr>
+						<tr class="info">
+							<th id="tabScore2"> </th>
+							<th id="etatParoTab2"> </th>
+							<th id="tauxDiabeteTab2">  </th>
+							<th id="tabacoTab2">  </th>
+							<th id="facesPlaqueTab2"></th>
+						</tr>
+						
+						<tr class="success">
+							<td> 0 </td>
+							<td id="parodonteSainTab2"> </td>
+							<td> &ge; 6</td>
+							<td id="nonFumeurTab2"> </td>
+							<td> 0</td>
+						</tr>
+						
+						<tr class="success">
+							<td > 1 </td>
+							<td id="parodonteTraiteTab2">  </td>
+							<td>6,1 - 7</td>
+							<td id="ancienFumeurTab2"> </td>
+							<td> 1 </td>
+						</tr>
+						
+						<tr class="success">
+							<td > 2 </td>
+							<td id="parodontiteChrDebTab2" >  </td>
+							<td> 7,1 - 8 </td>
+							<td> < 10 </td>
+							<td> 2</td>
+						</tr>
+						<tr class="warning">
+							<td > 3 </td>
+							<td id="parodontiteChrModTab2" >  </td>
+							<td> 8,1 - 9 </td>
+							<td> 10 - 19 </td>
+							<td> 3 </td>
+						</tr>
+						<tr class="warning">
+							<td > 4 </td>
+							<td id="parodontiteChrSevTab2">  </td>
+							<td> 9,1 - 10 </td>
+							<td> 20</td>
+							<td> 4</td>
+						</tr>
+						<tr class="danger">
+							<td > 5 </td>
+							<td id="parodontiteAgrTab2">  </td>
+							<td> > 10</td>
+							<td> > 20 </td>
+							<td id="pasAccHygieneTab2"> </td>
+						</tr>
+					
+					</table>
+				</div>
+				<div class="col-md-2"> </div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"> </div>
+				<div class="col-md-8"> 
+					<table class="table table-bordered table-hover" >
+						<tr class="active">
+							<th colspan="2"><center> <span id="titreTab3"></span></center> </th>
+						</tr>
+						<tr class="info">
+							<th id="tabScore3"> </th>
+							<th id="etatParoTab3">   </th>
+						</tr>
+						
+						<tr class="success">
+							<td> 0 </td>
+							<td id="protheseTransvisseeTab3">   </td>
+						</tr>
+						
+						<tr class="success">
+							<td > 1 </td>
+							<td id="protheseScelleeSupraTab3">  </td>
+						</tr>
+						
+						<tr class="success">
+							<td > 2 </td>
+							<td id="protheseScelleeJuxtaTab3"></td>
+						</tr>
+						<tr class="warning">
+							<td > 3 </td>
+							<td id="protheseScelleeEnfouiss1Tab3"></td>
+						</tr>
+						<tr class="warning">
+							<td > 4 </td>
+							<td id="protheseScelleeEnfouiss12Tab3">  </td>
+						</tr>
+						<tr class="danger">
+							<td > 5 </td>
+							<td id="protheseScelleeEnfouiss2Tab3"> </td>
+						</tr>
+					</table>
+				</div>
+<!--
+				<div class="col-md-2"> </div>
+-->
+			</div>
+		</div>
+
+<!--
+!!!!!!!!!!!!!!!!!      ONGLET A PROPOS !!!!!!!!!!!!!!!!!!!!!!!!!
+-->
+		<div style="display:none" id="aPropos">
+			<div class="container">
+				</br>
+				<dl>
+					<dt id="aProposObj"> </dt>
+					<dd id="aproposObjContent"> </dd>
+					</br>
+					<dt id="aProposMat">  </dt>
+					<dd id="aProposMatContent"> </dd>
+					</br>
+					<dt id="aProposRes">  </dt>
+					<dd id="aProposResContent"> </dd>
+					</br>
+					<dt id="aProposCcl"> </dt>
+					<dd id="aProposCclContent"> </dd>
+				</dl>
+				<hr>
+				
+				
+        
+				<div class="well">
+					<h1 align="center">Peri-implantitis risk factors: a prospective evaluation</h1>
+					<hr>
+					<h4 align="center">Anthony Mazel<sup data-text="">2</sup>, Souad Belkacemi<sup data-text="">1</sup>, Patrick Tavitian<sup data-text="">2</sup>, Grégory Stéphan<sup data-text="">2</sup>, Delphine Tardivo<sup data-text="">2</sup>, Jean Hugues Catherine<sup data-text="">2</sup>, Gérard Aboudharam<sup data-text="">12*</sup></h4>
+					</br>
+					</br>
+					<blockquote class="blockquote">
+						<footer class="blockquote-footer">
+							<strong>1</strong> Aix-Marseille Université, CNRS, IRD, INSERM, AP-HM, URMITE Institut Hospitalo-Universitaire - Méditerranée-Infection, Marseille, France
+							</br>
+							<strong>2</strong> UFR Odontologie, Aix-Marseille Université, Marseille, France
+							</br>
+							<strong>*</strong> Corresponding author: URMITE, IHU - Méditerranée Infection, 19-21 Boulevard Jean Moulin, 13005 Marseille, France. Phone: (+33) 4 13 73 24 01 Fax: (+33) 4 13 73 24 02
+							</br>
+							Email:<a href="mailto:gerard.aboudharam@univ-amu.fr ?subject=[site] Evaluation des risques de péri-implantite"> gerard.aboudharam@univ-amu.fr </a>
+						</footer>
+					</blockquote>
+					
+				</div>
+			</div>
+		</div>
+
+
+
+		<script type="text/javascript" src="js/diagram_canvas.js" > </script>
+		<script type="text/javascript" src="js/forms.js"> </script> 
+		<script type="text/javascript" src="js/labels.js"> </script> 
+		<div class="container">
+			<footer  class="blockquote-footer pull-right">Web &amp; Design :  <A HREF="mailto:allonsius.damien@hotmail.fr ?subject=[site] Evaluation des risques de péri-implantite">Damien Allonsius</A></footer>
+		</div>
+
+
+	</body>
+</html>
