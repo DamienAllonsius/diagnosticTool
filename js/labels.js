@@ -139,7 +139,11 @@ function chargerLabelsFR(){
 	$("#aProposResContent").text("Dans le modèle d’évaluation proposé, 57,1% des cas ont été identifiés à haut risque péri-implantaire contre seulement 7,2% des cas, à faible risque. Les 35,7% restants correspondent aux patients à risque péri-implantaire modéré.");
 	$("#aProposCcl").text("Conclusion");
 	$("#aProposCclContent").text("Les résultats observés appliqués au modèle d’évaluation proposé constituent un outil diagnostic valide dans l’évaluation du risque péri-implantaire. L’utilisation systématique de cet outil permet un dépistage et une prise en charge précoce de la péri-implantite pour l’amélioration du traitement.");	
-	$("#eraseButtonDiagram").val("Effacer");
+    $("#eraseButtonDiagram").val("Effacer");
+    $("#aProposCom").text("Communication");
+    $("#aProposComContentP1").text("À l’issue d’une sélection sur plus de 80 travaux émanant des 16 universités françaises, ce travail a été récompensé par le premier prix de thèse ADF/Dentsply Sirona (dans la catégorie 'recherche'), le 30 novembre 2018 dans le cadre du congrès annuel de l’ADF.");
+    $("#aProposComContentP2").html("Il a pu à ce titre être présenté sous forme de <a href='POSTER_vancouver.pdf'> poster </a> scientifique au niveau international dans le cadre du prestigieux programme de la SCADA (Student Competition for Advancing Dental Research and its Application) lors de la 97ème Session Générale de l’International Association for Dental Reasearch (IADR), en conjonction avec le 48ème Meeting Annuel de l’American Association for Dental Research (AADR) et le 43ème Meeting Annuel de la Canadian Association for Dental Research (CADR) qui s’est tenue du 19 au 22 juin à Vancouver, Canada.");
+    $("#aProposComContentP3").html("Cette étude a par ailleurs conduit à la rédaction d’<a href='https://www.ncbi.nlm.nih.gov/pubmed/30734522'>un article publié le 7 février 2019 dans la revue Investigative and Clinical Dentistry. </a>");
 }
 function chargerLabelsEN(){
 		//~ TITRE
@@ -256,8 +260,10 @@ function chargerLabelsEN(){
 	$("#aProposResContent").text("In the proposed evaluation model, 16/28 (57.1%) of cases were identified with high peri-implantitis risk compared to only 2/28 (7.2%) of cases with low risk. The remaining 10/28 (35.7%) correspond to patients with moderate peri-implantitis risk. All patients without peri-implantitis 15/15 (100%) were considered at low risk.");
 	$("#aProposCcl").text("Conclusions");
 	$("#aProposCclContent").text("The observed results applied to the proposed evaluation model, constitute an effective diagnostic tool in the peri-implantitis risk assessment. The systematic use of this tool allows an early detection and management of peri-implantitis to improve treatment.");
-	$("#eraseButtonDiagram").val("Reset");
+    $("#eraseButtonDiagram").val("Reset");
+    $("#aProposCom").text("Communication");
+    $("#aProposComContentP1").text("Selected among 80 research studies from the 16 French Universities, this work was awarded the first prize in the Student Competition for Advancing Dental Research and its Application (SCADA) French competition, held on November 30, 2018 during the ADF Annual Congress.");
+    $("#aProposComContentP2").html("As a national awardee, it was presented in the form of <a href='POSTER_vancouver.pdf'> poster </a> at the international level of the prestigious SCADA program at the 97th General Session of the International Association for Dental Research (IADR), in conjunction with the 48th Annual Meeting of the American Association for Dental Research (AADR) and the 43rd Annual Meeting of the Canadian Association for Dental Research (CADR), from June 19-22, 2019 in Vancouver.  ");
+    $("#aProposComContentP3").html("This research study was also <a href='https://www.ncbi.nlm.nih.gov/pubmed/30734522'> published in the Investigative and Clinical Dentistry journal in February, 2019.</a>");
+
 }
-
-
-
